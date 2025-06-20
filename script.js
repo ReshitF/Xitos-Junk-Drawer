@@ -35,7 +35,8 @@ poemFiles.forEach(file => {
 
       const authorEl = document.createElement('h3');
       authorEl.classList.add('poem-author');
-      authorEl.textContent = `by ${author}`;
+      // Italicize only the author name, not "by "
+      authorEl.innerHTML = `by <span class="author-name">${author}</span>`;
 
       const bodyEl = document.createElement('p');
       bodyEl.classList.add('poem-text');

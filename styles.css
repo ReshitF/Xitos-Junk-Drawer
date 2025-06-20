@@ -13,7 +13,10 @@ html, body {
   line-height: 1.6;
 }
 
+
+
 .landing {
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,6 +24,22 @@ html, body {
   align-items: center;
   text-align: center;
   padding: 0 2rem;
+}
+
+.scroll-arrow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.7;
+  pointer-events: none;
+  user-select: none;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
 }
 
 .title {
@@ -43,27 +62,47 @@ html, body {
 
 .poem {
   padding-bottom: 2rem;
-  border-bottom: 1px solid #444;
   margin-bottom: 2rem;
+  position: relative; /* needed for pseudo element */
 }
 
-.poem:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
+/* Separator line slightly wider than poem container */
+.poem:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 40px); /* 20px wider each side */
+  height: 1px;
+  background-color: #444;
+}
+
+.poem-author,
+.poem-text {
+  margin-left: 1rem;  /* Indent from the title */
 }
 
 .poem-title {
   font-size: 2.8rem;       /* Bigger title */
   font-weight: 700;
-  margin-bottom: 0.1rem;   /* Less space below title */
+  margin-bottom: 0;        /* Removed gap below title */
 }
 
 .poem-author {
+  font-weight: normal;     /* Make whole author line non-bold */
   font-size: 1.1rem;
-  color: #bbb;             /* Less gray, a bit lighter */
-  margin-top: 0;
-  margin-bottom: 1rem;
+  color: #ddd;             /* Same as poem text */
+  margin-top: -0.5rem;
+  margin-bottom: 1.7rem;
+  font-style: italic;      /* Reset italic for whole author line */
 }
+
+.poem-author .author-name {
+  font-style: italic;      /* Italicize only the actual author name */
+  font-weight: bold;     /* Make author name non-bold */
+}
+
 
 .poem-text {
   font-size: 1rem;
