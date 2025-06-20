@@ -23,7 +23,21 @@ async function loadPoemsInOrder() {
       const lines = text.split('\n');
       const title = lines[0] || 'Untitled';
       const author = lines[1] || 'Unknown';
-      const body = lines.slice(2).join('\n');
+      const authorLink = lines[2] && lines[2].trim() !== "" ? lines[2].trim() : null;
+
+      // Extract body lines, then trim leading & trailing empty lines
+      let bodyLines = lines.slice(authorLink ? 3 : 2);
+
+      // Remove leading empty lines
+      while (bodyLines.length > 0 && bodyLines[0].trim() === '') {
+        bodyLines.shift();
+      }
+      // Remove trailing empty lines
+      while (bodyLines.length > 0 && bodyLines[bodyLines.length - 1].trim() === '') {
+        bodyLines.pop();
+      }
+
+      const body = bodyLines.join('\n');
 
       // Create HTML elements
       const article = document.createElement('article');
@@ -35,13 +49,18 @@ async function loadPoemsInOrder() {
 
       const authorEl = document.createElement('h3');
       authorEl.classList.add('poem-author');
-      authorEl.innerHTML = `by <span class="author-name">${author}</span>`;
+
+      if (authorLink) {
+        authorEl.innerHTML = `by <a href="${authorLink}" target="_blank" rel="noopener noreferrer" class="author-link">${author}</a>`;
+      } else {
+        authorEl.innerHTML = `by <span class="author-name">${author}</span>`;
+      }
 
       const bodyEl = document.createElement('p');
       bodyEl.classList.add('poem-text');
       bodyEl.textContent = body;
 
-      // Append
+      // Append elements
       article.appendChild(titleEl);
       article.appendChild(authorEl);
       article.appendChild(bodyEl);
