@@ -11,15 +11,15 @@ const poemFiles = [
 
 const poemsContainer = document.getElementById('poems');
 
-poemFiles.forEach(file => {
-  fetch(file)
-    .then(response => {
+async function loadPoemsInOrder() {
+  for (const file of poemFiles) {
+    try {
+      const response = await fetch(file);
       if (!response.ok) {
         throw new Error(`Could not load ${file}`);
       }
-      return response.text();
-    })
-    .then(text => {
+      const text = await response.text();
+
       const lines = text.split('\n');
       const title = lines[0] || 'Untitled';
       const author = lines[1] || 'Unknown';
@@ -35,7 +35,6 @@ poemFiles.forEach(file => {
 
       const authorEl = document.createElement('h3');
       authorEl.classList.add('poem-author');
-      // Italicize only the author name, not "by "
       authorEl.innerHTML = `by <span class="author-name">${author}</span>`;
 
       const bodyEl = document.createElement('p');
@@ -47,8 +46,11 @@ poemFiles.forEach(file => {
       article.appendChild(authorEl);
       article.appendChild(bodyEl);
       poemsContainer.appendChild(article);
-    })
-    .catch(error => {
+    } catch (error) {
       console.error(error);
-    });
-});
+    }
+  }
+}
+
+// Call the async loader
+loadPoemsInOrder();
