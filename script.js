@@ -1,7 +1,11 @@
 // List your poem files here:
 const poemFiles = [
-  'poems/poem1.txt',
-  'poems/poem2.txt',
+  'poems/kiera1.txt',
+  'poems/MrsKennyTengu1.txt',
+  'poems/eggelette1.txt',
+  'poems/kiera2.txt',
+  'poems/oscarchopstick1.txt',
+  'poems/robonthat1.txt',
   // Add more poem filenames as you create them
 ];
 
