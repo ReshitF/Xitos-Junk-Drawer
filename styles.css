@@ -42,17 +42,26 @@ html, body {
 }
 
 .poem {
-  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #444;
+  margin-bottom: 2rem;
+}
+
+.poem:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .poem-title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.8rem;       /* Bigger title */
+  font-weight: 700;
+  margin-bottom: 0.1rem;   /* Less space below title */
 }
 
 .poem-author {
-  font-size: 1rem;
-  color: #999;
+  font-size: 1.1rem;
+  color: #bbb;             /* Less gray, a bit lighter */
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
