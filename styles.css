@@ -1,0 +1,67 @@
+/* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: #111;
+  color: #eee;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.intro {
+  font-size: 1.2rem;
+  max-width: 600px;
+  color: #aaa;
+}
+
+.poems {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.poem {
+  margin-bottom: 4rem;
+}
+
+.poem-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.poem-author {
+  font-size: 1rem;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.poem-text {
+  font-size: 1rem;
+  white-space: pre-wrap; /* Preserve line breaks */
+  line-height: 1.8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
