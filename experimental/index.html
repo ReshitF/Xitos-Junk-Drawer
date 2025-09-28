@@ -26,8 +26,8 @@
   const today = new Date().toISOString().split('T')[0];
 
   // build the URL for today’s puzzle
-  const url = `https://sebski123.github.io/NYTimesMiniArchive/?puzzleName=${today}#/puzzle`;
-
+  const url = `https://sebski123.github.io/NYTimesMiniArchive/?puzzleName=2025-09-28#/puzzle`;
+  
   // try to fetch the HTML
   fetch(url)
     .then(res => res.text())
